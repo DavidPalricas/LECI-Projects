@@ -1,0 +1,152 @@
+#(
+    This is a block, possible multiline, comment
+#)
+
+#(
+    This example illustrates the instantiation of a view and all the base graphical models
+    to be implemented in the minimum level.
+#)
+
+#
+# create an instance of a View.
+#
+# A View is a display window where one can capture snapshots of the canvas at a given moment.
+# A View holds a set of intrisic properties, every one with a type and a default value:
+# - Ox [Number, 0.0], Oy [Number, 0.0] - point of the canvas that appears in the central (sub)pixel of the view window
+# - width [Integer, 201] - number of pixels in a row
+# - height [Integer, 201] - number of pixels in a column
+# - title [String, "No title"] - the main window title
+# - background [String, "black"] - the color of the background
+#
+# The colon (:) is the instantiation operator
+# The equal (=) is the assignment operator
+# The with construction allows to change several properties for the same object.
+#
+view : View with {
+    width = 601;
+    height = 601;
+    title = "Illustrating the minimum level graphical models";
+    background = "alice blue";
+}
+
+# 
+# AGL holds a set of primitive data types, every one with a default value:
+# - Integer [0] - integer number
+# - Number [0.0] - integer or real number
+# - String [""] - sequence of characters
+# - Point [(0.0,0.0)] - a point in canvas coordinates
+# - Vector [(0.0,0.0)] - the difference between two points
+# - Vector [(0:1)] - a vector may also be defined using polar coordinates (angle:length).
+# Here, we are instanciating a 'Number'
+#
+cellSize : Number = 200;
+
+#
+# All graphical object have a reference point.
+#
+
+# 
+# A 'Line' is a straight segment connecting its reference point to another point given by a vector.
+# Its must be defined using the 'create_line' tkinter Canvas method.
+# The vector is specified by an additional property named 'length'.
+#
+Line at (-cellSize,cellSize) with {
+    length = (50,50);
+    fill = "red";
+}
+
+#
+# A 'Rectangle' is specified by its reference point (its center) and 
+# a vector pointing to its top right corner.
+# Its must be defined using the 'create_line' tkinter Canvas method.
+# The vector is specified by an additional property named 'length'.
+#
+Rectangle at (0,cellSize) with {
+    length = (50,50);
+    fill = "orange";
+}
+
+#
+# A 'Ellipse' is specified by its reference point (its center) and 
+# a vector pointing to the top right corner of the bounding rectangle
+# Its must be defined using the 'create_oval' tkinter Canvas method.
+# The vector is specified by an additional property named 'length'.
+#
+Ellipse at (cellSize,cellSize) with {
+    length = (60,40);
+    fill = "blue";
+}
+
+#
+# An 'Arc' is an arc of an ellipse given the 'start' angle and an 'extent'.
+# Its must be defined using the 'create_arc' tkinter Canvas method.
+#
+Arc at (-cellSize,0) with {
+    length = (50,50);
+    start = 30;
+    extent = 100;
+    outline = "tomato";
+}
+
+#
+# An 'ArcChord' is a 2D figure defined by an arc and the chord connecting the end points.
+# Its definition is similar to an 'Arc'.
+# It must be defined using the 'create_arc' tkinter Canvas method.
+#
+ArcChord at (cellSize,0) with {
+    length = (50,50);
+    start = 30;
+    extent = 150;
+    fill = "cyan";
+}
+
+#
+# A 'PieSlice' is a 2D figure defined by an arc and the center of the supporting ellipse.
+# Its definition is similar to an 'Arc'.
+# It must be defined using the 'create_arc' tkinter Canvas method.
+#
+PieSlice at (-cellSize,-cellSize) with {
+    length = (50,50);
+    start = 30;
+    extent = 300;
+    fill = "blue";
+}
+
+#
+# A 'Text' is simple a wrapper around the 'create_text' Canvas method.
+#
+Text at (0, -cellSize) with {
+    text = "Bla bla ...";
+    fill = "purple";
+}
+
+# 
+# A 'Dot' is the representation of a point.
+# It must be drawn as a 'create_rectangle' object with size 1
+#
+Dot at (cellSize, -cellSize) with {
+    fill = "black";
+}
+
+#
+# The refresh view command makes the graphics appear
+#
+refresh view;
+
+#
+# prints to the standard output
+#
+print "Press any mouse button to quit";
+
+#
+# the 'wait' command waits for the user to click a mouse button inside a view.
+# It returns the coordinates of the corresponding point in the canvas.
+#
+p : Point = wait mouse click; # instantiate a Point and waits for a mouse click
+print p;
+
+#
+# close the visualization window
+#
+close view;
+

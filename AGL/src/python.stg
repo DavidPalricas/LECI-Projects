@@ -1,0 +1,97 @@
+program(stat) ::= <<
+import tkinter as tk
+from tkinter import *
+import time
+from agl_library import *
+
+#            x
+#   --------->
+#   |
+#   |
+#   |
+#   |
+#   |
+# y v
+
+
+root = tk.Tk()
+root.withdraw()  # Oculta a janela principal
+top = tk.Toplevel()
+
+<stat; separator="\n">
+
+>>
+
+varfigure(figure_name, figure, view_name, bool) ::= <<
+<figure_name> = <figure>
+<if(bool)>
+<view_name>.add(<figure_name>)
+<endif>
+>>
+
+figures_expr(figure, expr, view_name, bool) ::= <<
+<figure>(<expr>)
+<if(!bool)>
+<view_name>.add(<figure>(<expr>))
+<endif>
+>>
+
+point(expr1, expr2) ::= <<
+(<expr1>,<expr2>)
+>>
+
+vector(expr1, expr2) ::= <<
+<expr1>,<expr2>
+>>
+
+figures_expr_with(figure, expr, with_operator, view_name, bool) ::= <<
+<figure>(<expr>, <with_operator>)
+<if(!bool)>
+<view_name>.add(<figure>(<expr>, <with_operator>))
+<endif>
+>>
+
+length(expr) ::= <<
+length=(<expr>),
+>>
+
+text(expr) ::= <<
+text=<expr>,
+>>
+
+figure_angles(angle_param, expr) ::= <<
+<angle_param>=<expr>,
+>>
+
+figure_colors(color_param, color) ::= <<
+<color_param>=<color>,
+>>
+
+with_operator_figure(with_operator_figure) ::= <<
+<with_operator_figure>
+>>
+
+viewdefault(view_name) ::= <<
+<view_name>=View(top)
+>>
+
+view_with_operator(view_name, with_operator) ::= <<
+<view_name>=View(top, <with_operator>)
+>>
+
+with_operator_view(view_params) ::= <<
+<view_params>
+>>
+
+for(id, expr1, expr2, statements) ::= <<
+for <id> in range(<expr1>, <expr2>):
+    <statements; separator="\n">
+>>
+
+with_figureparams(id, with_figureparams) ::= <<
+<id>.<with_figureparams; separator="\n">
+>>
+
+with_viewparams(id, with_viewparams) ::= <<
+<id>.<with_viewparams; separator="\n">
+>>

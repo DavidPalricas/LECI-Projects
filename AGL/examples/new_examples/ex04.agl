@@ -1,0 +1,100 @@
+#(
+    A 'Model' defines the appearance and properties of a graphical item.
+    It has an intrinsic reference frame, relative to which all of its graphical 
+    children are positioned.
+    When instantiated, a pose (position) is required, 
+    which represents where it is in its container.
+
+    There is a set of basic models: Dot, Rectangle, Line, ...
+
+    Every model holds a set of attributes (aka properties).
+    The set of properties may change from model to model.
+    Every property has an intrinsic type and a default value.
+
+    The set of properties of basic models is defined by default.
+    The set of properties of used-defined models is stablished when the model is defined.
+#)
+
+#
+# This example defines a pacman with eye.
+# 
+
+#
+# The double-colon operator (::) is used to defined a new model
+#
+Pacman :: Model {
+    # A Pacman is composed of a pie slice plus an ellipse representing an eye.
+    # Its reference frame is at the center of the circle circumscribing the pie slice.
+
+    # The main pacman shape, with a reference for future use
+    face : PieSlice at (0,0) with {
+        length = (50,50);
+        fill = "pink";
+        start = 30;
+        extent = 300;
+    }
+
+    # the eye, without a reference
+    Ellipse at (20,35) with {
+        fill = "black";
+        length = (5,5);
+    }
+}
+
+#
+# A strip where the pacman is moving
+# 
+Rectangle at (0,0) with {
+    length = (1000,70);
+    fill = "blue";
+}
+
+#
+# create an instance of a View, at the beginning of the strip
+#
+view : View with {
+    Ox = -450;
+    Oy = 0;
+    width = 401;
+    height = 401;
+    title = "Illustrating a moving pacman";
+    background = "alice blue";
+}
+
+#
+# Instantiate a Pacman, with the default property values
+#
+pacman : Pacman at (-450, 0);
+
+#
+# The refresh view command makes the graphics appear
+#
+refresh view;
+
+#
+# iteration to make the pacman open and close its mouth and to move 
+# both the pacman and the view to the right, such that pacman keeps
+# in the center of the view
+#
+for i in 1 .. 10 do {
+    with pacman.face do {
+        start = 1;
+        extent = 359;
+    }
+    refresh view after 20 ms;
+    with pacman.face do {
+        start = 30;
+        extent = 300;
+    }
+    refresh view after 25 ms;
+    move pacman by (10,0);    # the 'by' makes the movement relative; the argument is a vector
+    move view by (10,0);    # the 'by' makes the movement relative; the argument is a vector
+    refresh view;
+}
+
+print "Press any mouse button to quit";
+pos : Point = wait mouse click; # instantiate a Point and waits for a mouse click
+
+close view;
+
+

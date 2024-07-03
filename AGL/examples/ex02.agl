@@ -1,0 +1,64 @@
+#(
+    This example illustrates the instantiation of a view and 2 rectangles,
+    in a simple time-driven animation.
+#)
+
+#
+# create an instance of a View.
+#
+view : View with {
+    width = 401;
+    height = 401;
+    title = "Illustrating the rectangle shape";
+    background = "wheat";
+}
+
+#
+# create an instance of a Point
+#
+p : Point = (0,0);
+
+#
+# create an instance of a Rectangle
+# Since this rectangle will not be changed at runtime, there is no need to store a reference to it.
+#
+Rectangle at p with {
+    length = (100,100);
+    fill = "pink";
+}
+
+#
+# create another instance of a rectangle, this time storing its reference
+#
+r : Rectangle at p with {
+    length = (50,50);
+    fill = "wheat";
+}
+
+#
+# The instantiation of the graphical objects make them be drawn in the canvas,
+# however, they only appear in a view when it is refreshed.
+# The 'refresh' command plays this role.
+#
+refresh view;
+
+# 
+# a repetitive loop
+#
+# The double-dot (..) operator represents a range between 2 integer values.
+# A second .. may be used to represent the increment step.
+#
+for i in 1..10 do {
+    # to change a single property, the dot (.) may be used instead of the 'with' construction
+    r.state = "hidden"; # change 'state' property
+    # The 'after' modifier of the 'refresh' command allows to implement a timeline.
+    # The unit of time suffix is mandatory; consider only seconds ('s') and milliseconds ('ms')
+    refresh view after 100 ms;  # reference view but only when at least 100 ms have elapsed since last refresh
+    r.state = "normal";
+    refresh view after 100 ms;
+}
+
+print "Press any mouse button to quit";
+p = wait mouse click; # instantiate a Point and waits for a mouse click
+
+close view;

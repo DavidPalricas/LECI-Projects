@@ -1,0 +1,115 @@
+#(
+    A 'model' defines the appearance and properties of a graphical item.
+    It has an intrinsic reference frame, relative to which all of its graphical 
+    children are positioned.
+    When instantiated, a pose (position) is required, 
+    which represents where it is in its container.
+
+    There is a set of basic models: Dot, Rectangle, Line, ...
+
+    Every model holds a set of attributes (aka properties).
+    The set of properties may change from model to model.
+    Every property has an intrinsic type and a default value.
+
+    The set of properties of basic models is defined by default.
+    The set of properties of used-defined models is stablished when the model is defined.
+#)
+
+#
+# This example defines a pacman with eye.
+# 
+
+#
+# The doble-colon operator (::) is used to defined a new model
+#
+Pacman :: Model {
+    # A Pacman is composed of a pie slice plus an ellipse representing an eye.
+    # Its reference frame is at the center of the circle circumscribing the pie slice.
+    #
+    # Models can have their own properties, in which case a way to represent how they
+    # reshape the graphical object is mandatory
+
+    # The main pacman shape, with a reference for future use
+    face : PieSlice at (0,0) with {
+        length = (50,50);
+        fill = "pink";
+        start = 30;
+        extent = 300;
+    }
+
+    # the eye, without a reference
+    Ellipse at (20,35) with {
+        fill = "black";
+        length = (5,5);
+    }
+
+    # properties and how they reshape children's properties
+    mouth : Enum in { Open, Close } # the first value is the default
+    action on mouth {
+        if mouth == Open do
+            with face do {
+                start = 30;
+                extent = 300;
+            }
+        else do # has to be Close, since there are only two possible values
+            with face do {
+                start = 1;
+                extent = 359;
+            }
+    }
+}
+
+#
+# A strip where the pacman is moving
+# 
+Rectangle at (0,0) with {
+    length = (1000,70);
+    fill = "blue";
+}
+
+#
+# create an instance of a View, at the beginning of the strip
+#
+view : View with {
+    Ox = -450;
+    Oy = 0;
+    width = 401;
+    height = 401;
+    title = "Illustrating a moving pacman";
+    background = "alice blue";
+}
+
+#
+# Instantiate a Pacman, with the default property values
+#
+pacman : Pacman at (-450, 0);
+
+#
+# The refresh view command makes the graphics appear
+#
+refresh view;
+
+#
+# Animation may be given by a script written in the secondary language
+#
+s1 : Script = load "s0.xagl";
+play s1 with {
+    m = pacman;
+    v = view;
+}
+
+# 
+# Which may also be read from standard input
+#
+s2 : Script = input "Insert a XAgl script to make pacman move 100 units to the right";
+play s2 with {
+    m = pacman;
+    v = view;
+}
+
+print "Press any mouse button to quit";
+pos : Point = wait mouse click; # instantiate a Point and waits for a mouse click
+
+close view;
+
+

@@ -1,0 +1,64 @@
+#(
+    This example illustrates the instantiation of a view, a rectangle and a pie slice
+    to create a Pacman in a simple time-driven animation.
+#)
+
+#
+# create an instance of a View.
+#
+view : View with {
+    width = 401;
+    height = 401;
+    title = "Illustrating the rectangle shape";
+    background = "wheat";
+}
+
+#
+# create an instance of a rectangle
+#
+Rectangle at (10,0) with {
+    length = (200,60);
+    fill = "blue";
+}
+
+#
+# create an instance of a pie slice, storing its reference
+#
+pacman : PieSlice at (0,0) with {
+    length = (50,50);
+    fill = "pink";
+    start = 30;
+    extent = 300;
+}
+
+#
+# The refresh view command makes the graphics appear
+#
+refresh view;
+
+#
+# iteration to make the pacman open and close its mouth and to move 
+# both the pacman and the view to the right, such that pacman keeps
+# in the center of the view
+#
+for i in 1..10 do {
+    with pacman do {
+        start = 1;
+        extent = 359;
+    }
+    refresh view after 20 ms;
+    with pacman do {
+        start = 30;
+        extent = 300;
+    }
+    refresh view after 25 ms;
+    move pacman by (10,0);    # the 'by' makes the movement relative; the argument is a vector
+    move view by (10,0);    # the 'by' makes the movement relative; the argument is a vector
+    refresh view;
+}
+
+print "Press any mouse button to quit";
+pos : Point = wait mouse click; # instantiate a Point and waits for a mouse click
+
+close view;
+

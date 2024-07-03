@@ -1,0 +1,9 @@
+for i in 1 .. 10 do {
+    m.mouth = Close;
+    refresh v after 20 ms;
+    m.mouth = Open;
+    refresh v after 25 ms;
+    move m by (10,0);       # the 'by' makes the movement relative; the argument is a vector
+    move v by (10,0);       # the 'by' makes the movement relative; the argument is a vector
+    refresh v;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Site SIO - Products</title>
+		
+		<!-- Bootstrap minified CSS -->
+		<link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="../bootstrap/bootstrap-theme.min.css">
+
+		<!-- Personal Styles -->
+		<link rel="stylesheet" href="../css/style.css">
+
+        <script src="../js/products.js"></script>
+        <script src="../js/inicio.js"></script>
+
+	</head>
+
+
+
+
+    <body class="style" onload="memorabilia();">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#" onclick="login()">DETI</a>
+				</div>
+
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+                        <li><a href="#" onclick="inicio()">Início</a></li>	
+						<li class="active"><a href="#page2">Produtos</a></li>
+                        <li><a href="#page3">Sobre Nós</a></li>
+                        <li><a href="#page4"><img src="../imgs/profile.jpg" class="img_navbar"></a></li>
+                        <li><a href="#page5">Sobre Nós</a></li>
+                        <li><a href="#page6">Sobre Nós</a></li>
+					</ul>
+				</div>
+			</nav>
+	
+    
+			<h2 id="page2" style="text-align:center">Produtos </h2>
+			<br>
+		</div>
+
+
+        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+            <div style="width: 33.3%;">
+            </div>
+
+            <div style="width: 33.3%;">
+                <h3>Camisola do DETI</h3>
+                <img src="../imgs/camisola.jpg" alt="Camisola do DETI">
+                <h4 id="camisola">Stock: </h4>
+                <h4 id="camisola_price">Preço: </h4>
+                <h3><input type="button" onclick="add_item('1')" value="Adicionar ao Cart"/></h3>
+                <br>
+                <br>
+                <br>
+
+                <h3>Caneca do DETI</h3>
+                <img src="../imgs/caneca.png" alt="Caneca do DETI">
+                <h4 id="caneca">Stock: </h4>
+                <h4 id="caneca_price">Preço: </h4>
+                <h3><input type="button" onclick="add_item('2')" value="Adicionar ao Cart"/></h3>
+                <br>
+                <br>
+                <br>
+
+                <h3>Emblema do DETI</h3>
+                <img src="../imgs/emblema.jpg" alt="Emblema do DETI">
+                <h4 id="emblema">Stock: </h4>
+                <h4 id="emblema_price">Preço: </h4>
+                <h3><input type="button" onclick="add_item('3')" value="Adicionar ao Cart"/></h3>
+                <br>
+                <br>
+                <br>
+
+                <h3>Copo do DETI</h3>
+                <img src="../imgs/copo.jpg" alt="Copo do DETI">
+                <h4 id="copo">Stock: </h4>
+                <h4 id="copo_price">Preço: </h4>
+                <h3><input type="button" onclick="add_item('4')" value="Adicionar ao Cart"/></h3>
+                <br>
+                <br>
+                <br>
+
+                <h3>Cachecol do DETI</h3>
+                <img src="../imgs/cachecol.png" alt="Cachecol do DETI">
+                <h4 id="cachecol">Stock: </h4>
+                <h4 id="cachecol_price">Preço: </h4>
+                <h3><input type="button" onclick="add_item('5')" value="Adicionar ao Cart"/></h3>
+                <br>
+                <br>
+                <br>
+            </div>
+
+            <div id="memorabilia_cart" style="width: 33.3%;">
+                <h3>Carrinho do utilizador</h3>
+                <h2>
+                    Carrinho do utilizador <p id="nome"></p>
+                </h2>
+                <h3 id="camisola_cart"></h3>
+                <h3 id="caneca_cart"></h3>
+                <h3 id="emblema_cart"></h3>
+                <h3 id="copo_cart"></h3>
+                <h3 id="cachecol_cart"></h3>
+            </div>
+            
+        </div>
+
+	</body>
+
+
+</html>
+
+

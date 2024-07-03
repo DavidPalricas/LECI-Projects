@@ -1,0 +1,7 @@
+First Step-> You need to install the following python module: 
+		.Cherrypy
+
+Second Step -> Write python3 app.py in your terminal
+
+Third Step-> Click on the address shown in the terminal
+

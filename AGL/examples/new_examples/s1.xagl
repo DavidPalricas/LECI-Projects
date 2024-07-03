@@ -1,0 +1,8 @@
+m.mouth = Close;
+refresh v after 500 ms;
+m.mouth = Open;
+refresh v after 500 ms;
+m.mouth = Close;
+refresh v after 500 ms;
+m.mouth = Open;
+refresh v after 500 ms;

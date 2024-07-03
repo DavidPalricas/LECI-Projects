@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Site SIO (meter aqui um título decente) - Login</title>
+		
+		<!-- Bootstrap minified CSS -->
+		<link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="../bootstrap/bootstrap-theme.min.css">
+
+		<!-- Personal Styles -->
+		<link rel="stylesheet" href="../css/style.css">
+
+        <script src="../js/login.js"></script>
+
+	</head>
+
+
+
+
+    <body class="style">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">SIO</a>
+				</div>
+
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#page1">Login/Register</a></li>	
+					</ul>
+				</div>
+			</nav>
+	
+    
+			<h2 id="page1" style="text-align:center">Login para entrar no site de Merchandising </h2>
+			<br>
+		</div>
+
+
+        <div>
+                <p>Nome de utilizador</p>
+                <input type="text" id="username" value="" size="15" maxlength="40" style="color: blue;"/>
+                <p>Palavra-passe</p>
+                <input type="password" id="password" value="" size="10" maxlength="40" style="color: blue;"/>
+                
+                <br>
+                <br>
+                <br>
+
+                <p>
+                    <button onclick="doLogin()" style="background-color: blue;">Login</button>
+                    <button onclick="doRegister()" style="background-color: blue;">Register</button>
+                </p>
+
+
+                <p><input type="reset" value="Clear" onclick="clearInputs()" style="background-color: blue;"/></p>
+        </div>
+
+	</body>
+
+
+</html>
+
+
