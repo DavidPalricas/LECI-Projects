@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Abrigo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Adocao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Adotante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Animal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Desparasitacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Doacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Doador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Funcionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Historial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Servicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Tratador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Tratamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Pessoas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Vacina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
