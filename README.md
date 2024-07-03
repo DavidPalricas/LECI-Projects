@@ -7,3 +7,7 @@ Dig Dug -> Artificial Intelligence Course Project (2023/2024)
 
 Information Security in Organizations Course Projects (2023/2024)
 
+Database Systems Course Project (2023/2024)
+
+Operating Systems Course Project (2023/2024)
+
